@@ -3,56 +3,58 @@ import {
   ClockIcon,
   UserGroupIcon,
   InboxIcon,
+  HeartIcon
 } from '@heroicons/react/24/outline';
 import { lusitana } from '@/app/ui/fonts';
+import Link from 'next/link';
+
 
 const iconMap = {
-  collected: BanknotesIcon,
+  heart: HeartIcon,
   customers: UserGroupIcon,
   pending: ClockIcon,
-  invoices: InboxIcon,
+  collected: InboxIcon,
 };
 
-export default async function CardWrapper() {
-  return (
-    <>
-      {/* NOTE: Uncomment this code in Chapter 9 */}
+// export default async function CardWrapper() {
+//   return (
+//     <>
+//       {/* NOTE: Uncomment this code in Chapter 9 */}
 
-      {/* <Card title="Collected" value={totalPaidInvoices} type="collected" />
-      <Card title="Pending" value={totalPendingInvoices} type="pending" />
-      <Card title="Total Invoices" value={numberOfInvoices} type="invoices" />
-      <Card
-        title="Total Customers"
-        value={numberOfCustomers}
-        type="customers"
-      /> */}
-    </>
-  );
-}
+//       {/* <Card title="Collected" value={totalPaidInvoices} type="collected" />
+//       <Card title="Pending" value={totalPendingInvoices} type="pending" />
+//       <Card title="Total Invoices" value={numberOfInvoices} type="invoices" />
+//       <Card
+//         title="Total Customers"
+//         value={numberOfCustomers}
+//         type="customers"
+//       /> */}
+//     </>
+//   );
+// }
 
-export function Card({
+export default function Card({
   title,
   value,
   type,
 }: {
   title: string;
   value: number | string;
-  type: 'invoices' | 'customers' | 'pending' | 'collected';
+  type: 'heart' | 'customers' | 'pending' | 'collected';
 }) {
   const Icon = iconMap[type];
 
   return (
-    <div className="rounded-xl bg-gray-50 p-2 shadow-sm">
-      <div className="flex p-4">
-        {Icon ? <Icon className="h-5 w-5 text-gray-700" /> : null}
-        <h3 className="ml-2 text-sm font-medium">{title}</h3>
+    <div className=" flex flex-row flex-1 items-center gap-4 p-4 bg-white shadow rounded-xl">
+       <div className="h-16 w-16 flex items-center justify-center rounded-full bg-blue-100 text-blue-600">
+            <Icon className="h-6 w-6" />
+       </div>
+
+       <div>
+        <div className="text-2xl font-bold text-gray-800">5,294</div>
+        <div className="text-sm text-gray-500">Active Users</div>
       </div>
-      <p
-        className={`${lusitana.className}
-          truncate rounded-xl bg-white px-4 py-8 text-center text-2xl`}
-      >
-        {value}
-      </p>
     </div>
+
   );
 }

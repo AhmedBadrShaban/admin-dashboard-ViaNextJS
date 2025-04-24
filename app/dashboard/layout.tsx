@@ -15,11 +15,11 @@ export default async function DashboardLayout(
         // console.log(team);
 
     return (
-        <div className="flex h-screen flex-col md:flex-row md:overflow-hidden bg-gray-400 ">
-            <div className=" flex-none w-full md:w-1/6 bg-white">
+        <div className="flex h-screen flex-col md:flex-row md:overflow-hidden">
+            <div className="w-full md:w-56 bg-white">
                 <SideNav></SideNav>
             </div>
-            <div className="p-6 md:p-12 flex-grow overflow-y-auto ">
+            <div className="flex-grow p-6 overflow-y-auto bg-gray-50">
                 {children}
             </div>
 
