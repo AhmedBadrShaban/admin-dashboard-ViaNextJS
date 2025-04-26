@@ -1,7 +1,15 @@
 import Card from "../ui/dashboard/cards"
+import RevenueChart from "../ui/dashboard/revenue-chart"
+import { fetchRevenue } from "../lib/data"
+
+
+
+
 
  
- export default function DashboardPage(){
+ export default async function DashboardPage(){
+    const revenue = await fetchRevenue();
+
     return (
         <> 
 
@@ -27,21 +35,26 @@ import Card from "../ui/dashboard/cards"
           </div>
 
           </header>
-          <div className=" flex flex-col md:flex-row gap-8 mb-8 ">
+          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4 mb-8 ">
           <Card title="Title" type="heart" value={1}></Card>
-          <Card title="Title" type="collected" value={1}></Card>
-          <Card title="Title" type="pending" value={1}></Card>
-          <Card title="Title" type="customers" value={1}></Card>
+          <Card title="Title2" type="collected" value={12}></Card>
+          <Card title="Title3" type="pending" value={13}></Card>
+          <Card title="Title4" type="customers" value={14}></Card>
           </div>
           <div className="flex flex-col gap-8">
-            <div className="flex flex-row w-full gap-8">
-              <div className="w-3/5 bg-blue-300" > Left</div>
-              <div className="w-2/5 bg-black"> rIGHT </div>
+
+          <div className="grid grid-cols-5 w-full gap-8">
+            <div className="col-span-3 "> 
+              <RevenueChart revenue={revenue}/>
             </div>
-            <div className="flex flex-row w-full gap-8">
-            <div className="w-3/5 bg-blue-300" >Left</div>
-            <div className="w-2/5 bg-black"> Right</div>
-            </div>
+            <div className="col-span-2 bg-black">Right</div>
+          </div>
+
+          <div className="grid grid-cols-5 w-full gap-8">
+            <div className="col-span-3 bg-blue-300">Left</div>
+            <div className="col-span-2 bg-black">Right</div>
+          </div>
+
 
           </div>
         </>

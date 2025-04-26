@@ -51,8 +51,8 @@ export default function Card({
        </div>
 
        <div>
-        <div className="text-2xl font-bold text-gray-800">5,294</div>
-        <div className="text-sm text-gray-500">Active Users</div>
+        <div className="text-2xl font-bold text-gray-800">{value}</div>
+        <div className="text-sm text-gray-500">{title}</div>
       </div>
     </div>
 
